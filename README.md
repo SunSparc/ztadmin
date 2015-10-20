@@ -4,13 +4,13 @@ ZTAdmin
 [ZeroTier One](https://www.zerotier.com/) is a Software Defined Networking service that allows for creating a
 scalable, secure P2P virtual network between all your computers no matter where they are.
 
-This tool manipulates the settings on the [admin panel](https://www.zerotier.com/admin.html) and can be scripted.
+This tool manipulates the settings on the [admin panel](https://www.zerotier.com/admin.html) and can be scripted using the [API](https://github.com/zerotier/ZeroTierOne/tree/master/service).
 
 I am not associated with ZeroTier Networks, I just think it's awesome.
 
 
 ##Requirements:
-* Python version 2.6+ (not 3.x)
+* Python version 3.x (not 2.x)
 * Python [requests](https://pypi.python.org/pypi/requests/) module.
 * A ZeroTier One account.
 
