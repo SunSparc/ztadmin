@@ -8,13 +8,12 @@ s = requests.Session()
 
 # Set ZeroTier API URL variables.
 ztAuth_URL = 'https://my.zerotier.com/api/_auth/local'
-ztNetworkData_URL = 'https://www.zerotier.com/api/network'
-ztCreateNetwork_URL = 'https://www.zerotier.com/api/task/createNetwork'
+ztNetworkData_URL = 'https://my.zerotier.com/api/network'
 
 # Check for .ztlogin config file with login info (so user doesn't have to keep typing username/pw for repeated operations)
 config = configparser.ConfigParser()
 savecreds = configparser.RawConfigParser()
-c = config.read(home+'/.ztlogin')
+c = config.read(home+'/.ztlogin') # TODO: check for .ztlogin locally as well as in home, create configPath
 user = ""
 pw = ""
 
@@ -122,9 +121,9 @@ def setMemberData(networkID, memberID, attribute, value):
         
 # Create a new network.
 def createNetwork(name):
-    info = { "name": name }
+    info = {"config": {"name": name}}
     
-    r = s.post(ztCreateNetwork_URL, data=info)
+    r = s.post(ztNetworkData_URL, data=json.dumps(info), headers={'Content-Type': 'application/json'})
     
     if r.status_code == 409:
         # Network name already exists.
